@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Rachit Saxena – portfolio landing page with desktop base styles."
+    />
+    <title>Rachit.dev – Landing Page (Desktop Base)</title>
+
+    <style>
+      /* ===== TOKENS ===== */
+      :root {
+        --cream: #f4f6ff;
+        --brown: #172554;
+        --green: #3a5bff;
+        --gold: #f4a261;
+        --radius: 14px;
+      }
+
+      /* ===== BASE ===== */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Georgia, "Times New Roman", serif;
+        background: var(--cream);
+        color: var(--brown);
+        line-height: 1.65;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .wrap {
+        width: min(1150px, 92%);
+        margin-inline: auto;
+      }
+
+      .btn {
+        display: inline-block;
+        background: var(--gold);
+        color: #fff;
+        padding: 0.8rem 1.8rem;
+        border-radius: 999px;
+        font-weight: 700;
+      }
+
+      h2 {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      /* ===== HEADER / NAV ===== */
+      .site-header {
+        padding-block: 1rem;
+      }
+
+      .site-header .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--green);
+      }
+
+      .site-nav ul {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      /* ===== HERO ===== */
+      .hero .wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+        padding-block: 4rem;
+      }
+
+      .hero h1 {
+        font-size: 3.4rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+      }
+
+      .hero img {
+        border-radius: var(--radius);
+        height: 420px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      /* ===== SKILLS ===== */
+      .skills {
+        padding-block: 4rem;
+        background: #fff;
+      }
+
+      .skills__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .skill {
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--cream);
+        padding: 1.5rem;
+      }
+
+      .skill__body {
+        padding: 0.5rem;
+      }
+
+      .skill__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+      }
+
+      .skill__icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .skill__body h3 {
+        color: var(--green);
+        margin-bottom: 0.5rem;
+      }
+
+      /* ===== ABOUT ===== */
+      .about {
+        padding-block: 4rem;
+      }
+
+      .about .wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about img {
+        border-radius: var(--radius);
+      }
+
+      .about h2 {
+        text-align: left;
+      }
+
+      /* ===== CONTACT / FOOTER ===== */
+      .contact {
+        background: var(--green);
+        color: #fff;
+        padding-block: 3rem;
+        text-align: center;
+      }
+
+      .contact .btn {
+        margin-top: 1rem;
+      }
+
+      .site-footer {
+        padding-block: 1.5rem;
+      }
+
+      .site-footer .wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ===== HEADER ===== -->
+    <header class="site-header">
+      <div class="wrap">
+        <a class="logo" href="#">💻 Rachit.dev</a>
+
+        <nav class="site-nav" aria-label="Main">
+          <ul>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- ===== HERO ===== -->
+      <section class="hero">
+        <div class="wrap">
+          <div>
+            <h1>Turning ideas into digital experiences.</h1>
+
+            <p>
+              Hello! I am Rachit Saxena, a BCA Artificial Intelligence
+              student at Invertis University, Bareilly. I enjoy programming,
+              web development, and exploring AI technologies.
+            </p>
+
+            <a class="btn" href="#skills">Explore my skills</a>
+          </div>
+
+          <img
+            src="https://picsum.photos/id/0/800/600"
+            alt="Laptop on a workspace"
+          />
+        </div>
+      </section>
+
+      <!-- ===== SKILLS ===== -->
+      <section class="skills" id="skills">
+        <div class="wrap">
+          <h2>My Technical Skills</h2>
+
+          <div class="skills__grid">
+            <article class="skill">
+              <div class="skill__body">
+                <div class="skill__icon">🌐</div>
+
+                <div class="skill__row">
+                  <h3>Web Development</h3>
+                </div>
+
+                <p>
+                  Creating websites using HTML, CSS, JavaScript,
+                  Flexbox, and CSS Grid.
+                </p>
+              </div>
+            </article>
+
+            <article class="skill">
+              <div class="skill__body">
+                <div class="skill__icon">🤖</div>
+
+                <div class="skill__row">
+                  <h3>Artificial Intelligence</h3>
+                </div>
+
+                <p>
+                  Exploring artificial intelligence concepts and
+                  developing solutions to practical problems.
+                </p>
+              </div>
+            </article>
+
+            <article class="skill">
+              <div class="skill__body">
+                <div class="skill__icon">🐍</div>
+
+                <div class="skill__row">
+                  <h3>Python Programming</h3>
+                </div>
+
+                <p>
+                  Building applications using Python, Pandas,
+                  NumPy, and Streamlit.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ABOUT ===== -->
+      <section class="about" id="about">
+        <div class="wrap">
+          <img
+            src="https://picsum.photos/id/180/700/500"
+            alt="Workspace with a computer and study materials"
+          />
+
+          <div>
+            <h2>About Me</h2>
+
+            <p>
+              I am pursuing a Bachelor of Computer Applications in
+              Artificial Intelligence at Invertis University, Bareilly.
+            </p>
+
+            <p>
+              I am passionate about learning new technologies, improving
+              my coding skills, and creating practical projects that
+              solve real-world problems.
+            </p>
+
+            <p>
+              My current interests include Java, Python, web development,
+              data structures, and artificial intelligence.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== CONTACT ===== -->
+      <section class="contact" id="contact">
+        <div class="wrap">
+          <h2>Let's Connect</h2>
+
+          <p>
+            Have a project idea or want to connect about technology?
+            Feel free to reach out.
+          </p>
+
+          <a class="btn" href="mailto:rachitsaxena553@gmail.com">
+            Contact Me
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>&copy; 2026 Rachit Saxena</span>
+
+        <span>
+          <a href="https://github.com/Rachit3991" target="_blank"
+            >GitHub</a
+          >
+          &middot;
+          <a
+            href="https://www.linkedin.com/in/rachit-saxena-34981640a/"
+            target="_blank"
+            >LinkedIn</a
+          >
+          &middot;
+          <a href="mailto:rachitsaxena553@gmail.com">Email</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An HTML page demonstrating different types of CSS selectors.">
+
+  <title>CSS Selector Types</title>
+
+  <style>
+    /* 1. Universal Selector */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* 2. Element Selector */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f7f7f7;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    /* 3. Group Selector */
+    h1, h2 {
+      color: #2a5db0;
+    }
+
+    /* 4. ID Selector */
+    #main-heading {
+      border-bottom: 3px solid #2a5db0;
+      padding-bottom: 0.5rem;
+    }
+
+    /* 5. Class Selector */
+    .highlight {
+      background: #fff3cd;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* 6. Descendant Selector */
+    section p {
+      background: #fff;
+      padding: 0.75rem;
+    }
+
+    /* 7. Child Selector */
+    section > ul {
+      border-left: 3px solid #2a5db0;
+      padding-left: 2rem;
+    }
+
+    /* 8. Adjacent Sibling Selector */
+    h2 + p {
+      font-style: italic;
+    }
+
+    /* 9. General Sibling Selector */
+    h3 ~ p {
+      color: #555;
+    }
+
+    /* 10. Attribute Selector */
+    a[target="_blank"] {
+      color: #d35400;
+      font-weight: bold;
+    }
+
+    /* 11. Pseudo-class Selector */
+    a:hover {
+      text-decoration: none;
+      color: #c0392b;
+    }
+
+    /* 12. Pseudo-element Selector */
+    .note::first-letter {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #2a5db0;
+    }
+
+    section {
+      background: #fff;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1 id="main-heading">CSS Selector Types</h1>
+    <p>Learning how CSS selectors target HTML elements.</p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>1. Element Selector</h2>
+      <p>
+        The element selector targets all elements of a specific type,
+        such as all paragraphs or headings.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. ID Selector</h2>
+      <p>
+        The heading at the top uses the ID selector
+        <code>#main-heading</code>.
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Class Selector</h2>
+      <p class="highlight">
+        This paragraph uses the class selector
+        <code>.highlight</code>.
+      </p>
+    </section>
+
+    <section>
+      <h2>4. Group Selector</h2>
+      <p>
+        The <code>h1, h2</code> selector applies the same text color
+        to both heading types.
+      </p>
+    </section>
+
+    <section>
+      <h2>5. Descendant Selector</h2>
+      <p>
+        The selector <code>section p</code> targets paragraphs
+        located anywhere inside a section.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Child Selector</h2>
+      <p>The following list is a direct child of its section.</p>
+
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Adjacent Sibling Selector</h2>
+      <p>
+        This paragraph immediately follows an h2 heading and is
+        styled using <code>h2 + p</code>.
+      </p>
+    </section>
+
+    <section>
+      <h2>8. General Sibling Selector</h2>
+
+      <h3>Example Heading</h3>
+      <p>This paragraph is styled using the general sibling selector.</p>
+      <p>This paragraph is also styled using <code>h3 ~ p</code>.</p>
+    </section>
+
+    <section>
+      <h2>9. Attribute Selector</h2>
+      <p>
+        <a href="https://developer.mozilla.org/" target="_blank"
+           rel="noopener noreferrer">
+          Learn CSS on MDN
+        </a>
+      </p>
+      <p>
+        The selector <code>a[target="_blank"]</code> targets links
+        whose target attribute is set to <code>_blank</code>.
+      </p>
+    </section>
+
+    <section>
+      <h2>10. Pseudo-class Selector</h2>
+      <p>
+        <a href="#main-heading">Move to the main heading</a>.
+        Hover over this link to see the <code>:hover</code> effect.
+      </p>
+    </section>
+
+    <section>
+      <h2>11. Pseudo-element Selector</h2>
+      <p class="note">
+        The <code>::first-letter</code> selector styles the first
+        letter of this paragraph.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p><small>&copy; 2026 CSS Learning Project</small></p>
+  </footer>
+
+</body>
+
+</html>

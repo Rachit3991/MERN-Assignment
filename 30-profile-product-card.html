@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Profile and product cards using HTML and CSS.">
+
+  <title>Profile and Product Card</title>
+
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --primary: #1f3a93;
+      --accent: #f4a261;
+      --bg: #f8f9fc;
+      --text: #222;
+      --muted: #666;
+      --radius: 12px;
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ===== GENERAL STYLING ===== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-description {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    /* ===== CARD GRID ===== */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-content {
+      padding: 1.5rem;
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    /* ===== PROFILE CARD ===== */
+    .profile-header {
+      background: var(--primary);
+      height: 110px;
+    }
+
+    .profile-content {
+      text-align: center;
+      padding: 0 1.5rem 1.5rem;
+    }
+
+    .profile-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      margin: -60px auto 1rem;
+      position: relative;
+      display: block;
+      background: #e8edf8;
+    }
+
+    .profile-content h3 {
+      margin-bottom: 0.25rem;
+    }
+
+    .profile-role {
+      color: var(--primary);
+      font-weight: bold;
+      margin-top: 0;
+    }
+
+    .profile-details {
+      text-align: left;
+      margin-top: 1.25rem;
+    }
+
+    .profile-details p {
+      margin: 0.5rem 0;
+      overflow-wrap: anywhere;
+    }
+
+    /* ===== SKILL BADGES ===== */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .skill {
+      background: #e8edf8;
+      color: var(--primary);
+      border-radius: 20px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    /* ===== PRODUCT CARD ===== */
+    .product-image {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      background: #e8edf8;
+    }
+
+    .product-tag {
+      display: inline-block;
+      background: #fff0dd;
+      color: #8a4b08;
+      padding: 0.3rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .product-price {
+      color: var(--primary);
+      font-size: 1.6rem;
+      font-weight: bold;
+      margin: 0.75rem 0;
+    }
+
+    .product-old-price {
+      color: var(--muted);
+      font-size: 1rem;
+      text-decoration: line-through;
+      font-weight: normal;
+      margin-left: 0.5rem;
+    }
+
+    .product-features {
+      padding-left: 1.25rem;
+      color: var(--muted);
+    }
+
+    /* ===== BUTTONS ===== */
+    .button {
+      display: inline-block;
+      background: var(--accent);
+      color: #222;
+      text-decoration: none;
+      border: none;
+      border-radius: 6px;
+      padding: 0.7rem 1.2rem;
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      transition: filter 0.3s;
+    }
+
+    .button:hover {
+      filter: brightness(0.92);
+    }
+
+    .button-outline {
+      background: white;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    /* ===== DESIGN NOTE ===== */
+    .note {
+      background: #fff8ec;
+      border-left: 5px solid var(--accent);
+      padding: 1rem;
+      margin-top: 2rem;
+      border-radius: 4px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 700px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        justify-content: center;
+        text-align: center;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 0.25rem 0.5rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      main {
+        padding: 1rem;
+      }
+
+      .card-content {
+        padding: 1rem;
+      }
+
+      .product-image {
+        height: 190px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Rachit's Cards</h1>
+
+    <nav>
+      <a href="#profile">Profile Card</a>
+      <a href="#product">Product Card</a>
+      <a href="#design">Design Note</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <h2 class="section-title">Profile & Product Cards</h2>
+
+    <p class="section-description">
+      Assignment 30 | HTML and CSS | Responsive Card Design
+    </p>
+
+    <div class="card-grid">
+
+      <!-- PROFILE CARD -->
+      <section class="card" id="profile">
+
+        <div class="profile-header"></div>
+
+        <div class="profile-content">
+
+          <img
+            class="profile-image"
+            src="https://placehold.co/300x300/1f3a93/ffffff?text=RS"
+            alt="Rachit Saxena profile placeholder">
+
+          <h3>Rachit Saxena</h3>
+
+          <p class="profile-role">
+            BCA Artificial Intelligence Student
+          </p>
+
+          <p>
+            I am a student at Invertis University interested in
+            programming, web development, artificial intelligence,
+            and data analysis.
+          </p>
+
+          <div class="skills">
+            <span class="skill">Java</span>
+            <span class="skill">Python</span>
+            <span class="skill">C</span>
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">JavaScript</span>
+          </div>
+
+          <div class="profile-details">
+            <p><strong>University:</strong> Invertis University</p>
+            <p><strong>Location:</strong> Bareilly, Uttar Pradesh</p>
+            <p><strong>Interests:</strong> AI, Coding, Web Development</p>
+          </div>
+
+          <div class="button-group">
+            <a
+              class="button"
+              href="https://github.com/Rachit3991"
+              target="_blank"
+              rel="noopener noreferrer">
+              GitHub Profile
+            </a>
+
+            <a
+              class="button button-outline"
+              href="mailto:rachitsaxena553@gmail.com">
+              Email Me
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PRODUCT CARD -->
+      <section class="card" id="product">
+
+        <img
+          class="product-image"
+          src="https://placehold.co/700x450/e8edf8/1f3a93?text=Smart+Study+Laptop"
+          alt="Illustration of a laptop for studying and programming">
+
+        <div class="card-content">
+
+          <span class="product-tag">STUDENT PICK</span>
+
+          <h3>Smart Study Laptop</h3>
+
+          <p>
+            A sample product card for a laptop suitable for programming,
+            online classes, web development, and student projects.
+          </p>
+
+          <p class="product-price">
+            ₹45,999
+            <span class="product-old-price">₹52,999</span>
+          </p>
+
+          <h4>Features</h4>
+
+          <ul class="product-features">
+            <li>Suitable for programming practice</li>
+            <li>Useful for online learning</li>
+            <li>Supports web development tasks</li>
+            <li>Portable design for students</li>
+          </ul>
+
+          <div class="button-group">
+            <button class="button" type="button"
+              onclick="alert('This is a demonstration product card. No purchase was made.')">
+              Buy Now
+            </button>
+
+            <button class="button button-outline" type="button"
+              onclick="alert('Product saved for demonstration purposes.')">
+              Add to Wishlist
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- DESIGN NOTE -->
+    <section class="note" id="design">
+      <h3>Design Choices</h3>
+
+      <p>
+        <strong>Colours:</strong>
+        Deep blue provides a professional appearance, while orange
+        highlights buttons and important actions.
+      </p>
+
+      <p>
+        <strong>Card Layout:</strong>
+        CSS Grid places the profile and product cards side by side
+        on larger screens.
+      </p>
+
+      <p>
+        <strong>Rounded Corners:</strong>
+        Border-radius creates smooth edges for images, buttons, and cards.
+      </p>
+
+      <p>
+        <strong>Hover Effects:</strong>
+        Cards move slightly upward when the pointer is placed over them.
+      </p>
+
+      <p>
+        <strong>Responsive Design:</strong>
+        Media queries stack the cards vertically on smaller screens.
+      </p>
+
+      <p>
+        <strong>Reusability:</strong>
+        Shared CSS classes and variables keep the design consistent
+        and easier to maintain.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Rachit Saxena | BCA Artificial Intelligence</p>
+  </footer>
+
+</body>
+
+</html>

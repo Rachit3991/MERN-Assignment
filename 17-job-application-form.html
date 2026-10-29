@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Job Application Form - HTML Assignment">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Application Form</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Job Application Form</h1>
+    <p>Please complete the form to apply for a job position.</p>
+  </header>
+
+  <main>
+    <form action="#" method="post">
+
+      <fieldset>
+        <legend>Personal Information</legend>
+
+        <p>
+          <label for="fullname">Full Name:</label>
+          <input type="text" id="fullname" name="fullname"
+                 placeholder="Enter your full name" required>
+        </p>
+
+        <p>
+          <label for="email">Email Address:</label>
+          <input type="email" id="email" name="email"
+                 placeholder="example@email.com" required>
+        </p>
+
+        <p>
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone"
+                 placeholder="Enter your phone number" required>
+        </p>
+
+        <p>
+          <label for="dob">Date of Birth:</label>
+          <input type="date" id="dob" name="dob" required>
+        </p>
+
+        <p>
+          <label for="address">Address:</label>
+          <textarea id="address" name="address" rows="3" cols="40"
+                    placeholder="Enter your address" required></textarea>
+        </p>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>Job Details</legend>
+
+        <p>
+          <label for="position">Position Applied For:</label>
+          <select id="position" name="position" required>
+            <option value="">-- Select Position --</option>
+            <option value="web-developer">Web Developer</option>
+            <option value="software-developer">Software Developer</option>
+            <option value="data-analyst">Data Analyst</option>
+            <option value="ai-engineer">AI Engineer</option>
+            <option value="intern">Intern</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="department">Preferred Department:</label>
+          <select id="department" name="department" required>
+            <option value="">-- Select Department --</option>
+            <option value="IT">Information Technology</option>
+            <option value="AI">Artificial Intelligence</option>
+            <option value="analytics">Data Analytics</option>
+            <option value="HR">Human Resources</option>
+            <option value="marketing">Marketing</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="employment">Employment Type:</label>
+          <select id="employment" name="employment" required>
+            <option value="">-- Select Employment Type --</option>
+            <option value="full-time">Full-Time</option>
+            <option value="part-time">Part-Time</option>
+            <option value="internship">Internship</option>
+            <option value="remote">Remote</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="experience">Years of Experience:</label>
+          <input type="number" id="experience" name="experience"
+                 min="0" max="50" value="0" required>
+        </p>
+
+        <p>
+          <label for="salary">Expected Salary (per year):</label>
+          <input type="number" id="salary" name="salary"
+                 min="0" placeholder="Enter expected salary">
+        </p>
+
+        <p>
+          <label for="joining">Available Joining Date:</label>
+          <input type="date" id="joining" name="joining" required>
+        </p>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>Educational Qualifications</legend>
+
+        <p>
+          <label for="qualification">Highest Qualification:</label>
+          <select id="qualification" name="qualification" required>
+            <option value="">-- Select Qualification --</option>
+            <option value="12th">12th Pass</option>
+            <option value="diploma">Diploma</option>
+            <option value="bca">BCA</option>
+            <option value="btech">B.Tech</option>
+            <option value="bsc">B.Sc.</option>
+            <option value="mca">MCA</option>
+            <option value="mtech">M.Tech</option>
+            <option value="other">Other</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="college">College or University:</label>
+          <input type="text" id="college" name="college"
+                 placeholder="Enter institution name" required>
+        </p>
+
+        <p>
+          <label for="graduation">Graduation Year:</label>
+          <input type="number" id="graduation" name="graduation"
+                 min="1990" max="2035" placeholder="e.g. 2027" required>
+        </p>
+
+        <p>
+          <label for="skills">Technical Skills:</label>
+          <textarea id="skills" name="skills" rows="4" cols="40"
+                    placeholder="e.g. Java, Python, HTML, SQL"
+                    required></textarea>
+        </p>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>Resume and Cover Letter</legend>
+
+        <p>
+          <label for="resume">Upload Resume (PDF):</label>
+          <input type="file" id="resume" name="resume"
+                 accept=".pdf" required>
+        </p>
+
+        <p>
+          <label for="coverletter">Cover Letter:</label>
+          <textarea id="coverletter" name="coverletter"
+                    rows="6" cols="40"
+                    placeholder="Explain why you are suitable for this job"></textarea>
+        </p>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>Declaration</legend>
+
+        <p>
+          <input type="checkbox" id="declaration"
+                 name="declaration" required>
+          <label for="declaration">
+            I declare that the information provided in this application
+            is true and correct.
+          </label>
+        </p>
+
+        <p>
+          <input type="checkbox" id="consent" name="consent">
+          <label for="consent">
+            I agree to be contacted regarding this job application.
+          </label>
+        </p>
+
+      </fieldset>
+
+      <p>
+        <button type="submit">Submit Application</button>
+        <button type="reset">Reset Form</button>
+      </p>
+
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Job Application Form</p>
+  </footer>
+
+</body>
+
+</html>

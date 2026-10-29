@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Rachit Saxena – finished, fully responsive portfolio landing page."
+    />
+    <title>Rachit.dev – Responsive Portfolio</title>
+
+    <style>
+      /* ===== TOKENS ===== */
+      :root {
+        --cream: #f4f6ff;
+        --brown: #172554;
+        --green: #3a5bff;
+        --gold: #f4a261;
+        --radius: 14px;
+      }
+
+      /* ===== BASE ===== */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Georgia, "Times New Roman", serif;
+        background: var(--cream);
+        color: var(--brown);
+        line-height: 1.65;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .wrap {
+        width: min(1150px, 92%);
+        margin-inline: auto;
+      }
+
+      .btn {
+        display: inline-block;
+        background: var(--gold);
+        color: #fff;
+        padding: 0.8rem 1.8rem;
+        border-radius: 999px;
+        font-weight: 700;
+      }
+
+      h2 {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      /* ===== HEADER / NAV ===== */
+      .site-header {
+        padding-block: 1rem;
+      }
+
+      .site-header .wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--green);
+      }
+
+      .site-nav ul {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      /* ===== HERO ===== */
+      .hero .wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+        padding-block: 4rem;
+      }
+
+      .hero h1 {
+        font-size: 3.4rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+      }
+
+      .hero img {
+        border-radius: var(--radius);
+        height: 420px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      /* ===== PROJECTS ===== */
+      .projects {
+        padding-block: 4rem;
+        background: #fff;
+      }
+
+      .projects__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .project {
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--cream);
+        padding: 1.25rem;
+      }
+
+      .project__icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .project__body {
+        padding: 0.25rem;
+      }
+
+      .project__row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 0.5rem;
+      }
+
+      .project__tag {
+        color: var(--green);
+        font-weight: 700;
+      }
+
+      .project p {
+        margin-block: 0.75rem 1rem;
+      }
+
+      /* ===== ABOUT ===== */
+      .about {
+        padding-block: 4rem;
+      }
+
+      .about .wrap {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about img {
+        border-radius: var(--radius);
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+      }
+
+      .about h2 {
+        text-align: left;
+      }
+
+      /* ===== CONTACT / FOOTER ===== */
+      .contact {
+        background: var(--green);
+        color: #fff;
+        padding-block: 3rem;
+        text-align: center;
+      }
+
+      .contact .btn {
+        margin-top: 1rem;
+      }
+
+      .site-footer {
+        padding-block: 1.5rem;
+      }
+
+      .site-footer .wrap {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.9rem;
+      }
+
+      /* ===== MOBILE NAV (hamburger, no JS) ===== */
+      .nav-toggle,
+      .burger {
+        display: none;
+      }
+
+      .burger {
+        font-size: 1.8rem;
+        cursor: pointer;
+        line-height: 1;
+      }
+
+      /* ===== RESPONSIVE: TABLET (<= 900px) ===== */
+      @media (max-width: 900px) {
+        .hero .wrap,
+        .about .wrap {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .hero {
+          text-align: center;
+        }
+
+        .hero h1 {
+          font-size: 2.6rem;
+        }
+
+        .hero img {
+          height: 300px;
+        }
+
+        .projects__grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .about h2 {
+          text-align: center;
+        }
+
+        .about {
+          text-align: center;
+        }
+      }
+
+      /* ===== RESPONSIVE: PHONE (<= 600px) ===== */
+      @media (max-width: 600px) {
+        .site-header .wrap {
+          flex-wrap: wrap;
+        }
+
+        .burger {
+          display: block;
+        }
+
+        .site-nav {
+          width: 100%;
+          display: none;
+        }
+
+        .nav-toggle:checked ~ .site-nav {
+          display: block;
+        }
+
+        .site-nav ul {
+          flex-direction: column;
+          gap: 0;
+          text-align: center;
+          padding-top: 0.75rem;
+        }
+
+        .site-nav a {
+          display: block;
+          padding: 0.9rem;
+          border-top: 1px solid rgba(23, 37, 84, 0.15);
+        }
+
+        .hero .wrap {
+          padding-block: 2rem;
+        }
+
+        .hero h1 {
+          font-size: 2.1rem;
+        }
+
+        .hero img {
+          height: 220px;
+        }
+
+        h2 {
+          font-size: 1.6rem;
+        }
+
+        .projects__grid {
+          grid-template-columns: 1fr;
+        }
+
+        .about img {
+          height: 220px;
+        }
+
+        .site-footer .wrap {
+          flex-direction: column;
+          text-align: center;
+          gap: 0.25rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="logo" href="#">💻 Rachit.dev</a>
+
+        <input
+          type="checkbox"
+          id="nav-toggle"
+          class="nav-toggle"
+          aria-label="Toggle navigation"
+        />
+
+        <label for="nav-toggle" class="burger" aria-hidden="true">☰</label>
+
+        <nav class="site-nav" aria-label="Main">
+          <ul>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="wrap">
+          <div>
+            <h1>Building the future with code.</h1>
+
+            <p>
+              Hello! I am Rachit Saxena, a BCA Artificial Intelligence
+              student at Invertis University, Bareilly. I enjoy programming,
+              web development, and exploring AI technologies.
+            </p>
+
+            <a class="btn" href="#projects">Explore My Projects</a>
+          </div>
+
+          <img
+            src="https://picsum.photos/id/0/800/600"
+            alt="Laptop on a computer workspace"
+          />
+        </div>
+      </section>
+
+      <section class="projects" id="projects">
+        <div class="wrap">
+          <h2>My Projects</h2>
+
+          <div class="projects__grid">
+            <article class="project">
+              <div class="project__icon">📚</div>
+
+              <div class="project__body">
+                <div class="project__row">
+                  <h3>Library Management</h3>
+                  <span class="project__tag">Python</span>
+                </div>
+
+                <p>
+                  A library application to add books, issue books,
+                  return books, and view book availability using Streamlit.
+                </p>
+
+                <a
+                  class="btn"
+                  href="https://github.com/Rachit3991"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Project
+                </a>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project__icon">🏦</div>
+
+              <div class="project__body">
+                <div class="project__row">
+                  <h3>ATM Simulation</h3>
+                  <span class="project__tag">C</span>
+                </div>
+
+                <p>
+                  A console-based banking application with PIN
+                  authentication, balance inquiry, deposits, and withdrawals.
+                </p>
+
+                <a
+                  class="btn"
+                  href="https://github.com/Rachit3991"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Project
+                </a>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project__icon">🌾</div>
+
+              <div class="project__body">
+                <div class="project__row">
+                  <h3>Smart Agriculture</h3>
+                  <span class="project__tag">AI</span>
+                </div>
+
+                <p>
+                  An agriculture procurement automation concept focused
+                  on farmer support, multilingual access, and efficient
+                  procurement-centre operations.
+                </p>
+
+                <a class="btn" href="#contact">Learn More</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="about" id="about">
+        <div class="wrap">
+          <img
+            src="https://picsum.photos/id/180/700/500"
+            alt="Computer and study workspace"
+          />
+
+          <div>
+            <h2>About Me</h2>
+
+            <p>
+              I am pursuing a Bachelor of Computer Applications in
+              Artificial Intelligence at Invertis University, Bareilly.
+            </p>
+
+            <p>
+              I am interested in Java, Python, HTML, CSS, JavaScript,
+              data structures, and artificial intelligence.
+            </p>
+
+            <p>
+              My goal is to improve my technical skills by building
+              practical projects and learning new technologies.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="wrap">
+          <h2>Let's Connect</h2>
+
+          <p>
+            Have a project idea or want to discuss technology?
+            Feel free to contact me.
+          </p>
+
+          <a class="btn" href="mailto:rachitsaxena553@gmail.com">
+            Contact Me
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>&copy; 2026 Rachit Saxena</span>
+
+        <span>
+          <a
+            href="https://github.com/Rachit3991"
+            target="_blank"
+            rel="noopener noreferrer"
+          >GitHub</a>
+          ·
+          <a
+            href="https://www.linkedin.com/in/rachit-saxena-34981640a/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >LinkedIn</a>
+        </span>
+      </div>
+    </footer>
+  </body>
+</html>

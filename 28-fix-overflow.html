@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fixing overflow problems by Rachit Saxena.">
+
+  <title>Fixing Overflow Problems</title>
+
+  <style>
+    /* ===== FIXES (see comments marked FIX) ===== */
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    /* FIX 1: Padding no longer widens boxes */
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background: #f8f9fc;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    /* FIX 2: Images never exceed their container */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+    }
+
+    /* FIX 3: Wrapper fits different screen sizes */
+    .wrapper {
+      max-width: 700px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* FIX 4: Columns fit the available width */
+    .column {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid #1d3557;
+      margin-bottom: 1rem;
+      background: #fff;
+      border-radius: 8px;
+      min-width: 0;
+    }
+
+    /* FIX 5: Long URLs and words wrap */
+    .long-text {
+      overflow-wrap: anywhere;
+    }
+
+    /* FIX 6: Wide tables scroll inside their own container */
+    .table-scroll {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 650px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background: #e8edf8;
+      color: #1d3557;
+    }
+
+    /* FIX 7: Long content scrolls inside fixed-height box */
+    .fixed-box {
+      height: 90px;
+      overflow-y: auto;
+      border: 1px solid #999;
+      padding: .5rem;
+      background: #fff;
+      border-radius: 4px;
+    }
+
+    /* FIX 8: Code blocks scroll horizontally */
+    pre {
+      max-width: 100%;
+      overflow-x: auto;
+      background: #f4f4f4;
+      padding: .75rem;
+      border-radius: 4px;
+      white-space: pre;
+    }
+
+    h1 {
+      color: #1d3557;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #1d3557;
+    }
+
+    .note {
+      background: #fff8ec;
+      border-left: 4px solid #f4a261;
+      padding: .75rem;
+      margin-top: 1rem;
+      border-radius: 4px;
+    }
+
+    footer {
+      text-align: center;
+      color: #666;
+      padding: 1rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+      body {
+        padding: .5rem;
+      }
+
+      .column {
+        padding: .75rem;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+    }
+
+    /*
+      BROKEN ORIGINAL (for reference):
+
+      .wrapper { width: 900px; }
+      .column { width: 100%; padding: 1rem; border: 2px solid; }
+      img { width: 1000px; }
+      .fixed-box { height: 90px; }
+
+      These rules can cause horizontal overflow or hide content.
+      The fixes above make the layout more responsive.
+    */
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <h1>Overflow – Fixed</h1>
+
+    <p>
+      Assignment 28 | Rachit Saxena | BCA Artificial Intelligence
+    </p>
+
+    <!-- Image Overflow -->
+    <div class="column">
+      <h2>Image</h2>
+
+      <img
+        src="https://picsum.photos/id/1011/1000/400"
+        alt="A rower on a calm lake">
+
+      <div class="note">
+        <strong>Fix:</strong>
+        The image uses max-width: 100% and height: auto so it fits
+        inside its container.
+      </div>
+    </div>
+
+    <!-- Long Text Overflow -->
+    <div class="column long-text">
+      <h2>Long Unbroken Text</h2>
+
+      <p>
+        https://www.example.com/this/is/a/very/long/url/that/would/normally/stretch/the/layout/sideways/forever/and/ever
+      </p>
+
+      <div class="note">
+        <strong>Fix:</strong>
+        The overflow-wrap: anywhere property allows long URLs and
+        words to wrap inside the container.
+      </div>
+    </div>
+
+    <!-- Wide Table Overflow -->
+    <div class="column">
+      <h2>Wide Table</h2>
+
+      <div class="table-scroll">
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>Course</th>
+            <th>Year</th>
+          </tr>
+
+          <tr>
+            <td>1</td>
+            <td>Rachit Saxena</td>
+            <td>rachit@example.com</td>
+            <td>Bareilly</td>
+            <td>BCA AI</td>
+            <td>2027</td>
+          </tr>
+
+          <tr>
+            <td>2</td>
+            <td>Student 2</td>
+            <td>student@example.com</td>
+            <td>Meerut</td>
+            <td>B.Tech</td>
+            <td>2027</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="note">
+        <strong>Fix:</strong>
+        The table is placed inside a wrapper with overflow-x: auto.
+        On smaller screens, the table can scroll horizontally without
+        widening the entire webpage.
+      </div>
+    </div>
+
+    <!-- Fixed Height Box -->
+    <div class="column">
+      <h2>Fixed-Height Box</h2>
+
+      <div class="fixed-box">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Sed do eiusmod tempor incididunt ut labore et dolore magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+        ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit
+        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id est laborum.
+      </div>
+
+      <div class="note">
+        <strong>Fix:</strong>
+        The overflow-y: auto property adds vertical scrolling when
+        the content exceeds the fixed height.
+      </div>
+    </div>
+
+    <!-- Code Block Overflow -->
+    <div class="column">
+      <h2>Code Block</h2>
+
+      <pre><code>const message = "This line is intentionally very long so that it would overflow the container if not for overflow-x: auto";</code></pre>
+
+      <div class="note">
+        <strong>Fix:</strong>
+        The pre element uses overflow-x: auto, allowing long code
+        lines to scroll horizontally inside the code block.
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Rachit Saxena | BCA Artificial Intelligence</p>
+  </footer>
+
+</body>
+
+</html>

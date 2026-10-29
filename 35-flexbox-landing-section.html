@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Responsive Flexbox landing page with navigation, hero, features, testimonials and footer.">
+  <title>TechSphere – Flexbox Landing Page</title>
+
+  <style>
+    :root {
+      --primary: #1f3a93;
+      --light: #e8edff;
+      --dark: #172b70;
+      --accent: #f4a261;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      color: #222;
+      line-height: 1.6;
+      background: #fff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Navigation Bar */
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-block: 1rem;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--primary);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    nav ul a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: var(--light);
+    }
+
+    .hero .container {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding-block: 4rem;
+    }
+
+    .hero__text,
+    .hero__img {
+      flex: 1;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      color: var(--dark);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #222;
+      padding: .8rem 1.8rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .hero__img img {
+      width: 100%;
+      border-radius: 20px;
+      display: block;
+    }
+
+    /* Features Section */
+    .features {
+      padding-block: 4rem;
+      text-align: center;
+    }
+
+    .features h2 {
+      margin-bottom: 2rem;
+      color: var(--dark);
+    }
+
+    .features__list {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      flex: 1 1 260px;
+      background: #fff;
+      border: 1px solid #e3e3e3;
+      border-radius: 14px;
+      padding: 1.75rem;
+      transition: transform 0.3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature span {
+      font-size: 2.5rem;
+    }
+
+    .feature h3 {
+      margin: .5rem 0;
+      color: var(--primary);
+    }
+
+    /* Testimonials Section */
+    .testimonial {
+      background: var(--dark);
+      color: #fff;
+      padding-block: 3rem;
+    }
+
+    .testimonial .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    .quote {
+      flex: 1 1 300px;
+      max-width: 450px;
+    }
+
+    .quote cite {
+      display: block;
+      margin-top: .5rem;
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    /* Footer */
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-block: 1.5rem;
+      color: #666;
+    }
+
+    footer a:hover {
+      color: var(--primary);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav .container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .hero .container {
+        flex-direction: column;
+        text-align: center;
+        padding-block: 2.5rem;
+      }
+
+      .hero__img {
+        width: 100%;
+      }
+
+      footer .container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <span class="logo">Tech<span>Sphere</span></span>
+
+      <ul>
+        <li><a href="#features">Skills</a></li>
+        <li><a href="#stories">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container">
+
+      <div class="hero__text">
+        <h1>Learn technology. Build the future.</h1>
+
+        <p>
+          Hello, I am Rachit Saxena, a BCA Artificial Intelligence student
+          at Invertis University, Bareilly. I am passionate about programming,
+          web development, data science, and artificial intelligence.
+        </p>
+
+        <a class="btn" href="#features">Explore My Skills</a>
+      </div>
+
+      <div class="hero__img">
+        <img
+          src="https://picsum.photos/seed/technology/700/500"
+          alt="Technology and creative workspace">
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+
+      <h2>My Technical Skills</h2>
+
+      <div class="features__list">
+
+        <div class="feature">
+          <span>💻</span>
+          <h3>Programming</h3>
+          <p>
+            Learning Java, Python, and C to improve logical thinking
+            and problem-solving skills.
+          </p>
+        </div>
+
+        <div class="feature">
+          <span>🌐</span>
+          <h3>Web Development</h3>
+          <p>
+            Building responsive websites using HTML, CSS,
+            JavaScript, and Flexbox.
+          </p>
+        </div>
+
+        <div class="feature">
+          <span>🤖</span>
+          <h3>Artificial Intelligence</h3>
+          <p>
+            Exploring artificial intelligence, data analysis,
+            and technology-based solutions.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects and Testimonials -->
+  <section class="testimonial" id="stories">
+    <div class="container">
+
+      <blockquote class="quote">
+        "Building practical projects helps me improve my programming
+        knowledge and develop real-world problem-solving skills."
+        <cite>— Rachit Saxena, BCA AI Student</cite>
+      </blockquote>
+
+      <blockquote class="quote">
+        "My projects include a Library Management System and a concept
+        for Smart Agriculture Procurement Automation."
+        <cite>— Learning Through Projects</cite>
+      </blockquote>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+
+      <span>&copy; 2026 TechSphere | Rachit Saxena</span>
+
+      <span>
+        <a href="mailto:rachitsaxena553@gmail.com">Email</a> ·
+        <a href="https://github.com/Rachit3991" target="_blank"
+           rel="noopener noreferrer">GitHub</a> ·
+        <a href="https://www.linkedin.com/in/rachit-saxena-34981640a/"
+           target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </span>
+
+    </div>
+  </footer>
+
+</body>
+</html>

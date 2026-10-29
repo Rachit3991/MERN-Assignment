@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hero section demonstrating CSS positioning and z-index.">
+
+  <title>Hero Position and Z-Index</title>
+
+  <style>
+    /* ===== CSS VARIABLES ===== */
+    :root {
+      --primary: #1f3a93;
+      --accent: #f4a261;
+      --bg: #f8f9fc;
+      --text: #222;
+      --radius: 8px;
+    }
+
+    /* ===== GENERAL STYLING ===== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 10;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      position: relative;
+      min-height: 420px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: white;
+      background:
+        url("https://picsum.photos/id/1018/1600/700")
+        center / cover no-repeat;
+      overflow: hidden;
+    }
+
+    /* Dark overlay placed above background */
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 25, 60, 0.65);
+      z-index: 1;
+    }
+
+    /* Hero content appears above the overlay */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 750px;
+    }
+
+    .hero h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.2;
+      margin: 0 0 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--accent);
+      color: #222;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0.25rem;
+    }
+
+    .button:hover {
+      filter: brightness(0.92);
+    }
+
+    .button-outline {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem 1.5rem;
+    }
+
+    section {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-top: 0;
+    }
+
+    /* ===== POSITIONING DEMONSTRATION ===== */
+    .position-demo {
+      position: relative;
+      min-height: 200px;
+      background: #e8edf8;
+      border: 2px dashed var(--primary);
+      border-radius: var(--radius);
+      padding: 1rem;
+      overflow: hidden;
+    }
+
+    .box {
+      width: 150px;
+      padding: 1rem;
+      color: white;
+      text-align: center;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .box-one {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: #1f3a93;
+      z-index: 1;
+    }
+
+    .box-two {
+      position: absolute;
+      top: 55px;
+      left: 75px;
+      background: #e76f51;
+      z-index: 2;
+    }
+
+    .box-three {
+      position: absolute;
+      top: 90px;
+      left: 130px;
+      background: #2a9d8f;
+      z-index: 3;
+    }
+
+    /* ===== BADGE DEMONSTRATION ===== */
+    .card {
+      position: relative;
+      border: 1px solid #ddd;
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      background: white;
+    }
+
+    .badge {
+      position: absolute;
+      top: -12px;
+      right: 15px;
+      background: var(--accent);
+      color: #222;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    /* ===== DESIGN NOTE ===== */
+    .note {
+      background: #fff8ec;
+      border-left: 5px solid var(--accent);
+      padding: 1rem;
+      border-radius: 4px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 600px) {
+      header {
+        gap: 0.75rem;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 0.25rem 0.5rem 0.25rem 0;
+      }
+
+      .hero {
+        min-height: 350px;
+      }
+
+      .position-demo {
+        min-height: 220px;
+      }
+
+      .box {
+        width: 125px;
+        font-size: 0.85rem;
+      }
+
+      .box-two {
+        left: 55px;
+      }
+
+      .box-three {
+        left: 90px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Rachit's Website</h1>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#position">Position</a>
+      <a href="#zindex">Z-Index</a>
+      <a href="#design">Design Note</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h2>Welcome to My Website</h2>
+
+      <p>
+        I am Rachit Saxena, a BCA Artificial Intelligence student at
+        Invertis University. I am learning web development, programming,
+        and modern CSS techniques.
+      </p>
+
+      <a href="#position" class="button">Explore Positioning</a>
+      <a href="#zindex" class="button button-outline">Learn Z-Index</a>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- Positioning Section -->
+    <section id="position">
+      <h2>1. CSS Position Property</h2>
+
+      <p>
+        CSS positioning controls where elements appear on a webpage.
+        The position property includes static, relative, absolute,
+        fixed, and sticky.
+      </p>
+
+      <ul>
+        <li><strong>Static:</strong> Default positioning in normal document flow.</li>
+        <li><strong>Relative:</strong> Positions an element relative to its normal position.</li>
+        <li><strong>Absolute:</strong> Positions an element relative to its nearest positioned ancestor.</li>
+        <li><strong>Fixed:</strong> Positions an element relative to the viewport.</li>
+        <li><strong>Sticky:</strong> Switches between normal flow and sticking to an offset while scrolling.</li>
+      </ul>
+
+      <div class="note">
+        <strong>Example:</strong>
+        The boxes below use position: absolute inside a parent with
+        position: relative.
+      </div>
+
+      <div class="position-demo">
+        <div class="box box-one">Box 1</div>
+        <div class="box box-two">Box 2</div>
+        <div class="box box-three">Box 3</div>
+      </div>
+    </section>
+
+    <!-- Z-Index Section -->
+    <section id="zindex">
+      <h2>2. Understanding Z-Index</h2>
+
+      <p>
+        The CSS z-index property controls the stacking order of overlapping
+        elements. Within the same stacking context, an element with a
+        higher z-index generally appears above one with a lower value.
+      </p>
+
+      <div class="note">
+        <strong>Example:</strong>
+        Box 3 has z-index: 3, Box 2 has z-index: 2, and Box 1 has
+        z-index: 1. Therefore, Box 3 appears on top where they overlap.
+      </div>
+
+      <div class="card">
+        <span class="badge">NEW</span>
+
+        <h3>My Learning Card</h3>
+
+        <p>
+          This card uses position: relative, while the NEW badge uses
+          position: absolute and z-index: 2.
+        </p>
+      </div>
+    </section>
+
+    <!-- Design Note Section -->
+    <section id="design">
+      <h2>3. Design Choices</h2>
+
+      <div class="note">
+        <p>
+          <strong>Hero section:</strong>
+          A background image and dark overlay help the white text remain readable.
+        </p>
+
+        <p>
+          <strong>Positioning:</strong>
+          Relative and absolute positioning demonstrate how elements can
+          be placed and layered.
+        </p>
+
+        <p>
+          <strong>Z-index:</strong>
+          Different z-index values show how overlapping elements are stacked.
+        </p>
+
+        <p>
+          <strong>Responsive design:</strong>
+          Media queries adjust spacing and box sizes on smaller screens.
+        </p>
+
+        <p>
+          <strong>Maintainability:</strong>
+          CSS variables make it easier to update colours and border radius.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Rachit Saxena | BCA Artificial Intelligence</p>
+  </footer>
+
+</body>
+
+</html>

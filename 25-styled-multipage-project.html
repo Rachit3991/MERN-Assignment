@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Styled multi-page project by Rachit Saxena.">
+
+  <title>Styled Multi-Page Project | Rachit Saxena</title>
+
+  <style>
+    :root {
+      --primary: #1f3a93;
+      --accent: #f4a261;
+      --bg: #f8f9fc;
+      --text: #222;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1rem;
+      padding-bottom: 2px;
+    }
+
+    nav a:hover {
+      border-bottom: 2px solid var(--accent);
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+
+    .page {
+      display: none;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+    }
+
+    .page:target,
+    body:not(:has(.page:target)) #home {
+      display: block;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-top: 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: .75rem;
+      font-weight: 600;
+    }
+
+    input,
+    select,
+    textarea {
+      display: block;
+      width: 100%;
+      padding: .5rem;
+      margin-top: .25rem;
+      border: 1px solid #bbb;
+      border-radius: 4px;
+      font: inherit;
+    }
+
+    button {
+      background: var(--accent);
+      border: 0;
+      padding: .6rem 1.4rem;
+      border-radius: var(--radius);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover {
+      filter: brightness(.92);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: .5rem;
+    }
+
+    th {
+      background: #eef1fb;
+      text-align: left;
+    }
+
+    .note {
+      background: #fff8ec;
+      border-left: 5px solid var(--accent);
+      padding: 1rem;
+      margin-top: 1.5rem;
+      border-radius: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        gap: 1rem;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: .3rem .5rem .3rem 0;
+      }
+
+      main {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Rachit's Site</h1>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#register">Register</a>
+      <a href="#contact">Contact</a>
+      <a href="#design">Design Note</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Home Page -->
+    <section id="home" class="page">
+      <h2>Home</h2>
+
+      <p>
+        Welcome to my styled multi-page project. This website is created
+        using HTML and CSS as part of my web development assignment.
+      </p>
+
+      <p>
+        My name is Rachit Saxena, and I am pursuing BCA in Artificial
+        Intelligence at Invertis University.
+      </p>
+    </section>
+
+    <!-- About Page -->
+    <section id="about" class="page">
+      <h2>About Me</h2>
+
+      <table>
+        <tr>
+          <th>Name</th>
+          <td>Rachit Saxena</td>
+        </tr>
+
+        <tr>
+          <th>Location</th>
+          <td>Bareilly, Uttar Pradesh</td>
+        </tr>
+
+        <tr>
+          <th>Course</th>
+          <td>BCA in Artificial Intelligence</td>
+        </tr>
+
+        <tr>
+          <th>University</th>
+          <td>Invertis University</td>
+        </tr>
+
+        <tr>
+          <th>Interests</th>
+          <td>Artificial Intelligence, Programming, Web Development</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Registration Page -->
+    <section id="register" class="page">
+      <h2>Registration</h2>
+
+      <form action="#">
+        <label>
+          Full Name
+          <input type="text" name="name" placeholder="Enter your name" required>
+        </label>
+
+        <label>
+          Email
+          <input type="email" name="email" placeholder="Enter your email" required>
+        </label>
+
+        <label>
+          Course
+          <select name="course">
+            <option value="BCA AI">BCA Artificial Intelligence</option>
+            <option value="BCA">BCA</option>
+            <option value="BTech">B.Tech</option>
+            <option value="MCA">MCA</option>
+          </select>
+        </label>
+
+        <button type="submit">Register</button>
+      </form>
+    </section>
+
+    <!-- Contact Page -->
+    <section id="contact" class="page">
+      <h2>Contact Me</h2>
+
+      <form action="#">
+        <label>
+          Name
+          <input type="text" name="contact-name" placeholder="Enter your name" required>
+        </label>
+
+        <label>
+          Email
+          <input type="email" name="contact-email" placeholder="Enter your email" required>
+        </label>
+
+        <label>
+          Message
+          <textarea name="message" rows="4" placeholder="Write your message" required></textarea>
+        </label>
+
+        <button type="submit">Send Message</button>
+      </form>
+
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:rachitsaxena553@gmail.com">
+          rachitsaxena553@gmail.com
+        </a>
+      </p>
+
+      <p>
+        <strong>GitHub:</strong>
+        <a href="https://github.com/Rachit3991" target="_blank"
+           rel="noopener noreferrer">My GitHub Profile</a>
+      </p>
+
+      <p>
+        <strong>LinkedIn:</strong>
+        <a href="https://www.linkedin.com/in/rachit-saxena-34981640a/"
+           target="_blank" rel="noopener noreferrer">My LinkedIn Profile</a>
+      </p>
+    </section>
+
+    <!-- Design Choices Page -->
+    <section id="design" class="page">
+      <h2>Design Choices</h2>
+
+      <div class="note">
+        <p>
+          <strong>Colour:</strong>
+          Deep blue represents trust and professionalism, while orange
+          highlights buttons and interactive elements.
+        </p>
+
+        <p>
+          <strong>Typography:</strong>
+          The system font stack provides fast loading and readable text.
+          A line-height of 1.6 improves readability.
+        </p>
+
+        <p>
+          <strong>Layout:</strong>
+          The content width is limited to 800px to keep the page easy
+          to read. White cards stand out against the light-grey background.
+        </p>
+
+        <p>
+          <strong>Navigation:</strong>
+          Navigation links use HTML fragment identifiers to show different
+          sections without JavaScript or separate HTML files.
+        </p>
+
+        <p>
+          <strong>Maintainability:</strong>
+          CSS variables store the main colours and border radius, making
+          the design easier to update.
+        </p>
+
+        <p>
+          <strong>Responsive Design:</strong>
+          A media query adjusts the header, navigation, and spacing for
+          smaller screens.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <small>&copy; 2026 Rachit Saxena | BCA Artificial Intelligence</small>
+  </footer>
+
+</body>
+
+</html>

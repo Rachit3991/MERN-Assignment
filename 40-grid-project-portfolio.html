@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rachit Saxena's portfolio showcasing web development and AI projects.">
+
+  <title>Grid Project – Rachit Saxena Portfolio</title>
+
+  <style>
+    :root {
+      --ink: #1a1a2e;
+      --paper: #fdfbf7;
+      --accent: #e94560;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+    }
+
+    body {
+      font-family: Georgia, serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    .layout {
+      display: grid;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 1.5rem;
+      padding: 1.5rem;
+
+      grid-template-columns: repeat(12, 1fr);
+
+      grid-template-areas:
+        "head   head   head   head   head   head   head   head   head   head   head   head"
+        "hero   hero   hero   hero   hero   hero   hero   about  about  about  about  about"
+        "p1     p1     p1     p2     p2     p2     p3     p3     p3     p4     p4     p4"
+        "skills skills skills skills skills skills contact contact contact contact contact contact"
+        "foot   foot   foot   foot   foot   foot   foot   foot   foot   foot   foot   foot";
+    }
+
+    /* Header */
+    .head {
+      grid-area: head;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 3px double var(--ink);
+      padding-bottom: .75rem;
+      gap: 1rem;
+    }
+
+    .head h1 {
+      font-size: 2.2rem;
+    }
+
+    .head nav a {
+      margin-left: 1rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .head nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      grid-area: hero;
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      min-height: 320px;
+    }
+
+    .hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero h2 {
+      position: absolute;
+      left: 1.5rem;
+      bottom: 1.5rem;
+      color: #fff;
+      font-size: 2rem;
+      text-shadow: 0 2px 8px #000;
+    }
+
+    /* About Section */
+    .about {
+      grid-area: about;
+      background: var(--ink);
+      color: #fff;
+      padding: 1.5rem;
+      border-radius: 6px;
+    }
+
+    .about h2 {
+      color: var(--accent);
+      margin-bottom: .5rem;
+    }
+
+    /* Project Cards */
+    .p1 {
+      grid-area: p1;
+    }
+
+    .p2 {
+      grid-area: p2;
+    }
+
+    .p3 {
+      grid-area: p3;
+    }
+
+    .p4 {
+      grid-area: p4;
+    }
+
+    .project {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    .project h3 {
+      color: var(--accent);
+      margin-bottom: .5rem;
+    }
+
+    .project p {
+      font-size: .95rem;
+    }
+
+    /* Skills Section */
+    .skills {
+      grid-area: skills;
+    }
+
+    .skills h2 {
+      margin-bottom: .5rem;
+    }
+
+    .skills ul {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .5rem;
+      list-style: none;
+      padding: 0;
+      margin-top: .5rem;
+    }
+
+    .skills li {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: .4rem;
+      text-align: center;
+      border-radius: 4px;
+    }
+
+    /* Contact Section */
+    .contact {
+      grid-area: contact;
+      background: #fff0f3;
+      padding: 1.5rem;
+      border-radius: 6px;
+    }
+
+    .contact h2 {
+      margin-bottom: .5rem;
+    }
+
+    .contact a {
+      color: var(--ink);
+      overflow-wrap: anywhere;
+    }
+
+    /* Footer */
+    .foot {
+      grid-area: foot;
+      text-align: center;
+      border-top: 1px solid #ccc;
+      padding-top: 1rem;
+      font-size: .85rem;
+    }
+
+    /* Tablet Layout */
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-areas:
+          "head head"
+          "hero hero"
+          "about about"
+          "p1 p2"
+          "p3 p4"
+          "skills skills"
+          "contact contact"
+          "foot foot";
+      }
+    }
+
+    /* Mobile Layout */
+    @media (max-width: 520px) {
+      .layout {
+        grid-template-columns: 1fr;
+
+        grid-template-areas:
+          "head"
+          "hero"
+          "about"
+          "p1"
+          "p2"
+          "p3"
+          "p4"
+          "skills"
+          "contact"
+          "foot";
+      }
+
+      .head {
+        flex-direction: column;
+      }
+
+      .head h1 {
+        font-size: 1.8rem;
+      }
+
+      .head nav a {
+        margin-left: 0;
+        margin-right: .8rem;
+      }
+
+      .hero {
+        min-height: 260px;
+      }
+
+      .hero h2 {
+        font-size: 1.5rem;
+      }
+
+      .skills ul {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <!-- Header -->
+    <header class="head">
+      <h1>Rachit Saxena</h1>
+
+      <nav>
+        <a href="#projects">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <img
+        src="https://picsum.photos/id/1040/1000/600"
+        alt="Landscape photograph">
+
+      <h2>Building the web, one grid at a time.</h2>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+      <h2>About Me</h2>
+
+      <p>
+        I am Rachit Saxena, a BCA Artificial Intelligence student at
+        Invertis University, Bareilly. I am passionate about programming,
+        web development, problem-solving, and exploring AI technologies.
+        This portfolio demonstrates responsive layouts created using CSS Grid.
+      </p>
+    </section>
+
+    <!-- Project 1 -->
+    <article class="project p1" id="projects">
+      <h3>Library Management System</h3>
+
+      <p>
+        A Python and Streamlit application for adding books, issuing books,
+        returning books, and viewing library records.
+      </p>
+    </article>
+
+    <!-- Project 2 -->
+    <article class="project p2">
+      <h3>Login UI</h3>
+
+      <p>
+        A responsive login page created using HTML, CSS, and Flexbox
+        with a simple and user-friendly interface.
+      </p>
+    </article>
+
+    <!-- Project 3 -->
+    <article class="project p3">
+      <h3>Photo Gallery</h3>
+
+      <p>
+        A responsive image gallery using CSS Grid, different column sizes,
+        and media queries for mobile and desktop screens.
+      </p>
+    </article>
+
+    <!-- Project 4 -->
+    <article class="project p4">
+      <h3>Smart Agriculture</h3>
+
+      <p>
+        An SIH project concept for automating agricultural procurement
+        using multilingual support and an IVR-based system.
+      </p>
+    </article>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+      <h2>Technical Skills</h2>
+
+      <ul>
+        <li>HTML5</li>
+        <li>CSS Grid</li>
+        <li>Flexbox</li>
+        <li>Java</li>
+        <li>Python</li>
+        <li>C</li>
+        <li>JavaScript</li>
+        <li>Git & GitHub</li>
+        <li>Artificial Intelligence</li>
+      </ul>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <h2>Contact Me</h2>
+
+      <p>
+        📧
+        <a href="mailto:rachitsaxena553@gmail.com">
+          rachitsaxena553@gmail.com
+        </a>
+      </p>
+
+      <p>
+        📍 Bareilly, Uttar Pradesh, India
+      </p>
+
+      <p>
+        GitHub:
+        <a href="https://github.com/Rachit3991" target="_blank" rel="noopener noreferrer">
+          github.com/Rachit3991
+        </a>
+      </p>
+
+      <p>
+        LinkedIn:
+        <a href="https://www.linkedin.com/in/rachit-saxena-34981640a/"
+           target="_blank" rel="noopener noreferrer">
+          Visit My Profile
+        </a>
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="foot">
+      &copy; 2026 Rachit Saxena | BCA Artificial Intelligence
+    </footer>
+
+  </div>
+
+</body>
+</html>

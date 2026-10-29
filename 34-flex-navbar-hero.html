@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>34 - Flex Navbar Hero | Rachit Saxena</title>
+
+    <style>
+        :root {
+            --primary: #1f3a93;
+            --secondary: #f4a261;
+            --background: #f4f6f9;
+            --white: #ffffff;
+            --text: #222222;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+
+            background-color: var(--primary);
+            padding: 15px 6%;
+        }
+
+        .logo {
+            color: var(--white);
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            display: block;
+            color: var(--white);
+            text-decoration: none;
+            padding: 9px 14px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            background-color: var(--secondary);
+            color: var(--text);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+
+            min-height: 480px;
+            padding: 60px 8%;
+            background-color: var(--white);
+        }
+
+        .hero-content {
+            flex: 1 1 350px;
+        }
+
+        .hero-content .tag {
+            display: inline-block;
+            background-color: #e8edff;
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .hero-content h1 {
+            color: var(--primary);
+            font-size: clamp(30px, 5vw, 48px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            color: var(--secondary);
+        }
+
+        .hero-content p {
+            max-width: 550px;
+            color: #555555;
+            margin-bottom: 25px;
+            font-size: 17px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary);
+            color: var(--text);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Hero Profile Card */
+        .hero-visual {
+            flex: 1 1 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-card {
+            width: 100%;
+            max-width: 340px;
+            padding: 35px 25px;
+            text-align: center;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(31, 58, 147, 0.2);
+        }
+
+        .profile-circle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+
+            background-color: var(--secondary);
+            color: var(--primary);
+            border-radius: 50%;
+            font-size: 38px;
+            font-weight: bold;
+        }
+
+        .profile-card h2 {
+            margin-bottom: 8px;
+        }
+
+        .profile-card p {
+            color: #eeeeee;
+            margin-bottom: 15px;
+        }
+
+        .profile-label {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 50px 8%;
+            text-align: center;
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-description {
+            color: #666666;
+            margin-bottom: 30px;
+        }
+
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .skill-card {
+            flex: 1 1 200px;
+            max-width: 260px;
+            padding: 25px 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            border-bottom: 4px solid var(--secondary);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 22px 15px;
+        }
+
+        footer p {
+            margin: 4px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .nav-menu {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .nav-menu li,
+            .nav-menu a {
+                width: 100%;
+            }
+
+            .hero {
+                text-align: center;
+                padding: 45px 6%;
+                gap: 30px;
+            }
+
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                width: 100%;
+            }
+
+            .skills-section {
+                padding: 40px 6%;
+            }
+
+            .section-title {
+                font-size: 27px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="#home" class="logo">Rachit<span> Saxena</span></a>
+
+        <ul class="nav-menu">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <main>
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+                <span class="tag">BCA Artificial Intelligence Student</span>
+
+                <h1>
+                    Hello, I'm <span>Rachit Saxena</span>
+                </h1>
+
+                <p>
+                    I am pursuing BCA in Artificial Intelligence at
+                    Invertis University, Bareilly. I am interested in
+                    programming, web development, data science, and
+                    building practical technology projects.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#skills" class="btn btn-primary">
+                        Explore My Skills
+                    </a>
+
+                    <a href="mailto:rachitsaxena553@gmail.com"
+                       class="btn btn-secondary">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+
+            <!-- Profile Card -->
+            <div class="hero-visual">
+                <div class="profile-card">
+                    <div class="profile-circle">RS</div>
+
+                    <h2>Rachit Saxena</h2>
+
+                    <p>Artificial Intelligence Student</p>
+
+                    <span class="profile-label">
+                        Learning • Building • Innovating
+                    </span>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- About and Skills -->
+        <section class="skills-section" id="about">
+            <h2 class="section-title">About My Journey</h2>
+
+            <p class="section-description">
+                Developing technical skills through learning and projects.
+            </p>
+
+            <div class="skills-container" id="skills">
+
+                <article class="skill-card">
+                    <h3>Programming</h3>
+                    <p>
+                        Java, Python, and C programming with a focus
+                        on logic building and problem-solving.
+                    </p>
+                </article>
+
+                <article class="skill-card">
+                    <h3>Web Development</h3>
+                    <p>
+                        HTML, CSS, and JavaScript for building
+                        responsive and interactive websites.
+                    </p>
+                </article>
+
+                <article class="skill-card">
+                    <h3>Data Science</h3>
+                    <p>
+                        Learning Pandas, NumPy, data analysis,
+                        and visualization techniques.
+                    </p>
+                </article>
+
+                <article class="skill-card">
+                    <h3>Projects</h3>
+                    <p>
+                        Working on a Library Management System
+                        and exploring smart agriculture solutions.
+                    </p>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p><strong>Rachit Saxena</strong></p>
+
+        <p>BCA Artificial Intelligence | Invertis University</p>
+
+        <p>
+            Email:
+            <a href="mailto:rachitsaxena553@gmail.com"
+               style="color: #f4a261;">
+                rachitsaxena553@gmail.com
+            </a>
+        </p>
+
+        <p>&copy; 2026 Rachit Saxena. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

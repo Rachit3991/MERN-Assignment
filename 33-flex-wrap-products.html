@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>33 - Flex Wrap Products | Rachit Saxena</title>
+
+    <style>
+        :root {
+            --primary: #1f3a93;
+            --secondary: #f4a261;
+            --background: #f4f6f9;
+            --white: #ffffff;
+            --text: #222222;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: #eeeeee;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            background-color: #172b70;
+            padding: 12px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: var(--secondary);
+            color: var(--text);
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 30px;
+        }
+
+        .section-description {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #555555;
+        }
+
+        /* Product gallery using Flexbox */
+        .products {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        /* Product card */
+        .product-card {
+            flex: 1 1 230px;
+            max-width: 270px;
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Product image area */
+        .product-image {
+            height: 170px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e8edff;
+            color: var(--primary);
+            font-size: 65px;
+        }
+
+        .product-info {
+            padding: 18px;
+        }
+
+        .product-info h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+
+        .description {
+            color: #666666;
+            font-size: 14px;
+            min-height: 45px;
+        }
+
+        .price {
+            margin: 15px 0;
+            font-size: 22px;
+            font-weight: bold;
+            color: #18733c;
+        }
+
+        .old-price {
+            font-size: 14px;
+            color: #888888;
+            text-decoration: line-through;
+            margin-left: 5px;
+            font-weight: normal;
+        }
+
+        .buy-button {
+            display: block;
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--primary);
+            color: var(--white);
+            font-size: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .buy-button:hover {
+            background-color: var(--secondary);
+            color: var(--text);
+        }
+
+        /* Information section */
+        .info-box {
+            background-color: var(--white);
+            padding: 25px;
+            margin-top: 35px;
+            border-left: 5px solid var(--secondary);
+            border-radius: 8px;
+        }
+
+        .info-box h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .info-box ul {
+            padding-left: 22px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 12px;
+            }
+
+            .section-title {
+                font-size: 25px;
+            }
+
+            .products {
+                gap: 15px;
+            }
+
+            .product-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Website Header -->
+    <header>
+        <h1>Rachit Store</h1>
+        <p>A Responsive Product Gallery Using CSS Flexbox</p>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container" id="home">
+
+        <h2 class="section-title" id="products">Our Products</h2>
+
+        <p class="section-description">
+            Explore our products. The cards automatically wrap into new rows
+            according to the available screen width.
+        </p>
+
+        <!-- Flexbox Product Gallery -->
+        <section class="products">
+
+            <!-- Product 1 -->
+            <article class="product-card">
+                <div class="product-image" aria-hidden="true">💻</div>
+
+                <div class="product-info">
+                    <h3>Laptop</h3>
+
+                    <p class="description">
+                        A laptop for programming, studying, and everyday tasks.
+                    </p>
+
+                    <p class="price">
+                        ₹45,999
+                        <span class="old-price">₹52,999</span>
+                    </p>
+
+                    <button class="buy-button" onclick="showMessage('Laptop')">
+                        View Product
+                    </button>
+                </div>
+            </article>
+
+            <!-- Product 2 -->
+            <article class="product-card">
+                <div class="product-image" aria-hidden="true">📱</div>
+
+                <div class="product-info">
+                    <h3>Smartphone</h3>
+
+                    <p class="description">
+                        A smartphone for communication, photography, and apps.
+                    </p>
+
+                    <p class="price">
+                        ₹18,999
+                        <span class="old-price">₹22,999</span>
+                    </p>
+
+                    <button class="buy-button" onclick="showMessage('Smartphone')">
+                        View Product
+                    </button>
+                </div>
+            </article>
+
+            <!-- Product 3 -->
+            <article class="product-card">
+                <div class="product-image" aria-hidden="true">🎧</div>
+
+                <div class="product-info">
+                    <h3>Headphones</h3>
+
+                    <p class="description">
+                        Comfortable headphones for music, calls, and online classes.
+                    </p>
+
+                    <p class="price">
+                        ₹1,499
+                        <span class="old-price">₹1,999</span>
+                    </p>
+
+                    <button class="buy-button" onclick="showMessage('Headphones')">
+                        View Product
+                    </button>
+                </div>
+            </article>
+
+            <!-- Product 4 -->
+            <article class="product-card">
+                <div class="product-image" aria-hidden="true">⌚</div>
+
+                <div class="product-info">
+                    <h3>Smart Watch</h3>
+
+                    <p class="description">
+                        A smartwatch with useful everyday features and notifications.
+                    </p>
+
+                    <p class="price">
+                        ₹2,499
+                        <span class="old-price">₹3,499</span>
+                    </p>
+
+                    <button class="buy-button" onclick="showMessage('Smart Watch')">
+                        View Product
+                    </button>
+                </div>
+            </article>
+
+            <!-- Product 5 -->
+            <article class="product-card">
+                <div class="product-image" aria-hidden="true">⌨️</div>
+
+                <div class="product-info">
+                    <h3>Keyboard</h3>
+
+                    <p class="description">
+                        A keyboard for coding, typing, and office work.
+                    </p>
+
+                    <p class="price">
+                        ₹899
+                        <span class="old-price">₹1,299</span>
+                    </p>
+
+                    <button class="buy-button" onclick="showMessage('Keyboard')">
+                        View Product
+                    </button>
+                </div>
+            </article>
+
+            <!-- Product 6 -->
+            <article class="product-card">
+                <div class="product-image" aria-hidden="true">🖱️</div>
+
+                <div class="product-info">
+                    <h3>Wireless Mouse</h3>
+
+                    <p class="description">
+                        A wireless mouse for comfortable computer navigation.
+                    </p>
+
+                    <p class="price">
+                        ₹599
+                        <span class="old-price">₹899</span>
+                    </p>
+
+                    <button class="buy-button" onclick="showMessage('Wireless Mouse')">
+                        View Product
+                    </button>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- Explanation -->
+        <section class="info-box" id="about">
+            <h2>About This Project</h2>
+
+            <p>
+                This project demonstrates a responsive product gallery
+                created using HTML, CSS Flexbox, and JavaScript.
+            </p>
+
+            <br>
+
+            <h3>CSS Flexbox Properties Used:</h3>
+
+            <ul>
+                <li><strong>display: flex;</strong> — Arranges product cards using Flexbox.</li>
+
+                <li><strong>flex-wrap: wrap;</strong> — Moves cards to the next row when needed.</li>
+
+                <li><strong>justify-content: center;</strong> — Centers the product cards.</li>
+
+                <li><strong>align-items: stretch;</strong> — Stretches cards along the cross axis.</li>
+
+                <li><strong>gap: 25px;</strong> — Adds spacing between cards.</li>
+
+                <li><strong>flex: 1 1 230px;</strong> — Allows cards to grow and shrink, with a 230px basis.</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>&copy; 2026 Rachit Saxena | BCA Artificial Intelligence</p>
+        <p>Invertis University, Bareilly, Uttar Pradesh</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        function showMessage(productName) {
+            alert(
+                "You selected: " + productName +
+                "\nThis is a demonstration product gallery."
+            );
+        }
+    </script>
+
+</body>
+</html>

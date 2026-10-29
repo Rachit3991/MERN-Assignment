@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Responsive product grid using CSS Grid auto-fit and minmax.">
+  <title>Auto-Reflowing Product Grid</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #f5f6fa;
+      padding: 2rem 1rem;
+      color: #222;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1f3a93;
+    }
+
+    /* Automatically adjusts columns without media queries */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      max-width: 1200px;
+      margin: 1.5rem auto;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .card h2 {
+      font-size: 1.05rem;
+      margin: 0.75rem 0 0.25rem;
+      color: #1f3a93;
+    }
+
+    .price {
+      color: #0a8754;
+      font-weight: 700;
+    }
+
+    .note {
+      text-align: center;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      color: #666;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Our Products</h1>
+
+  <p class="note">
+    <code>grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))</code>
+    <br>
+    Resize the browser window to see the grid adjust automatically!
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <img
+        src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=400&h=300&fit=crop"
+        alt="Coffee beans">
+      <h2>Coffee Beans</h2>
+      <p class="price">₹499</p>
+    </div>
+
+    <div class="card">
+      <img
+        src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400&h=300&fit=crop"
+        alt="Fresh strawberries">
+      <h2>Fresh Strawberries</h2>
+      <p class="price">₹199</p>
+    </div>
+
+    <div class="card">
+      <img
+        src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop"
+        alt="Freshly baked bread">
+      <h2>Sourdough Bread</h2>
+      <p class="price">₹149</p>
+    </div>
+
+    <div class="card">
+      <img
+        src="https://images.unsplash.com/photo-1587049352851-8d4e89133924?w=400&h=300&fit=crop"
+        alt="Golden honey in a jar">
+      <h2>Natural Honey</h2>
+      <p class="price">₹329</p>
+    </div>
+
+    <div class="card">
+      <img
+        src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&h=300&fit=crop"
+        alt="Green tea">
+      <h2>Green Tea</h2>
+      <p class="price">₹259</p>
+    </div>
+
+    <div class="card">
+      <img
+        src="https://images.unsplash.com/photo-1532336414038-cf19250c5757?w=400&h=300&fit=crop"
+        alt="Assorted spices">
+      <h2>Spice Box</h2>
+      <p class="price">₹599</p>
+    </div>
+
+    <div class="card">
+      <img
+        src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&h=300&fit=crop"
+        alt="Olive oil bottle">
+      <h2>Olive Oil</h2>
+      <p class="price">₹749</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Created by Rachit Saxena | BCA Artificial Intelligence</p>
+  </footer>
+
+</body>
+
+</html>
