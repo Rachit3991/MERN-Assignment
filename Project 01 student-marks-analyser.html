@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Student Performance Tracker</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #eefbf3;
+      color: #243b30;
+    }
+
+    header {
+      background: #166534;
+      color: white;
+      padding: 25px;
+      text-align: center;
+      border-radius: 12px;
+    }
+
+    header h1 {
+      margin-top: 0;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      margin: 20px 0;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px #00000012;
+    }
+
+    h2 {
+      color: #166534;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 95%;
+      padding: 11px;
+      margin-top: 6px;
+      border: 1px solid #b7d7c1;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 11px 16px;
+      margin: 12px 5px 0 0;
+      border: none;
+      border-radius: 6px;
+      background: #15803d;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #14532d;
+    }
+
+    .delete-btn {
+      background: #dc2626;
+      margin: 0;
+    }
+
+    .delete-btn:hover {
+      background: #991b1b;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .stat-box {
+      background: #dcfce7;
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    .stat-box h3 {
+      margin: 5px 0;
+      color: #166534;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      background: white;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      text-align: center;
+    }
+
+    th {
+      background: #bbf7d0;
+    }
+
+    .pass {
+      color: #15803d;
+      font-weight: bold;
+    }
+
+    .fail {
+      color: #dc2626;
+      font-weight: bold;
+    }
+
+    #message {
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 25px;
+      color: #52665a;
+    }
+
+    @media (max-width: 650px) {
+      body {
+        padding: 10px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        font-size: 12px;
+      }
+
+      th, td {
+        padding: 7px 4px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Student Performance Tracker</h1>
+    <p>Record marks, check grades, and track academic performance.</p>
+  </header>
+
+  <section class="card">
+    <h2>Add Student Details</h2>
+
+    <form id="studentForm">
+      <label for="studentName">Student Name</label>
+      <input
+        type="text"
+        id="studentName"
+        placeholder="Enter full name"
+        required
+      >
+
+      <label for="rollNumber">Roll Number</label>
+      <input
+        type="text"
+        id="rollNumber"
+        placeholder="Enter roll number"
+        required
+      >
+
+      <label for="marks">Marks Obtained (Out of 100)</label>
+      <input
+        type="number"
+        id="marks"
+        min="0"
+        max="100"
+        step="1"
+        placeholder="Enter marks"
+        required
+      >
+
+      <button type="submit">Save Student</button>
+      <button type="reset">Clear Form</button>
+    </form>
+
+    <p id="message" role="status"></p>
+  </section>
+
+  <section class="card">
+    <h2>Performance Overview</h2>
+
+    <div class="stats">
+      <div class="stat-box">
+        <p>Total Students</p>
+        <h3 id="totalStudents">0</h3>
+      </div>
+
+      <div class="stat-box">
+        <p>Class Average</p>
+        <h3 id="classAverage">0%</h3>
+      </div>
+
+      <div class="stat-box">
+        <p>Highest Marks</p>
+        <h3 id="highestMarks">0</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Student Records</h2>
+
+    <label for="searchInput">Search Student</label>
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search by name or roll number"
+    >
+
+    <button type="button" id="showAllButton">Show All Students</button>
+    <button type="button" id="sortButton">Sort by Percentage</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Roll No.</th>
+          <th>Name</th>
+          <th>Marks</th>
+          <th>Percentage</th>
+          <th>Grade</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody id="studentTable">
+        <tr>
+          <td colspan="7">No student records available.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    <p>© 2026 Rachit Saxena | Student Performance Tracker</p>
+  </footer>
+
+  <script>
+    const students = [];
+
+    const form = document.getElementById("studentForm");
+    const nameInput = document.getElementById("studentName");
+    const rollInput = document.getElementById("rollNumber");
+    const marksInput = document.getElementById("marks");
+    const message = document.getElementById("message");
+    const table = document.getElementById("studentTable");
+    const searchInput = document.getElementById("searchInput");
+
+    function getGrade(percentage) {
+      if (percentage >= 90) return "A+";
+      if (percentage >= 80) return "A";
+      if (percentage >= 70) return "B";
+      if (percentage >= 60) return "C";
+      if (percentage >= 40) return "D";
+      return "F";
+    }
+
+    function getStatus(marks) {
+      return marks >= 40 ? "Pass" : "Fail";
+    }
+
+    function updateOverview(data) {
+      document.getElementById("totalStudents").textContent = data.length;
+
+      if (data.length === 0) {
+        document.getElementById("classAverage").textContent = "0%";
+        document.getElementById("highestMarks").textContent = "0";
+        return;
+      }
+
+      const total = data.reduce(
+        (sum, student) => sum + student.marks,
+        0
+      );
+
+      const average = total / data.length;
+      const highest = Math.max(...data.map(student => student.marks));
+
+      document.getElementById("classAverage").textContent =
+        average.toFixed(2) + "%";
+
+      document.getElementById("highestMarks").textContent = highest;
+    }
+
+    function displayStudents(data) {
+      table.replaceChildren();
+
+      if (data.length === 0) {
+        const row = document.createElement("tr");
+        const cell = document.createElement("td");
+
+        cell.colSpan = 7;
+        cell.textContent = "No matching student records found.";
+
+        row.appendChild(cell);
+        table.appendChild(row);
+
+        updateOverview(data);
+        return;
+      }
+
+      data.forEach(student => {
+        const row = document.createElement("tr");
+        const percentage = student.marks;
+        const grade = getGrade(percentage);
+        const status = getStatus(student.marks);
+
+        [
+          student.roll,
+          student.name,
+          student.marks,
+          percentage + "%",
+          grade,
+          status
+        ].forEach((value, index) => {
+          const cell = document.createElement("td");
+          cell.textContent = value;
+
+          if (index === 5) {
+            cell.className = status === "Pass" ? "pass" : "fail";
+          }
+
+          row.appendChild(cell);
+        });
+
+        const actionCell = document.createElement("td");
+        const deleteButton = document.createElement("button");
+
+        deleteButton.textContent = "Delete";
+        deleteButton.className = "delete-btn";
+        deleteButton.type = "button";
+
+        deleteButton.addEventListener("click", function() {
+          const index = students.findIndex(
+            item => item.roll === student.roll
+          );
+
+          if (index !== -1) {
+            students.splice(index, 1);
+            displayStudents(students);
+            message.textContent = "Student record deleted.";
+          }
+        });
+
+        actionCell.appendChild(deleteButton);
+        row.appendChild(actionCell);
+        table.appendChild(row);
+      });
+
+      updateOverview(data);
+    }
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = nameInput.value.trim();
+      const roll = rollInput.value.trim();
+      const marksValue = marksInput.value.trim();
+      const marks = Number(marksValue);
+
+      if (!name || !roll) {
+        message.textContent = "Please fill in all student details.";
+        return;
+      }
+
+      if (
+        marksValue === "" ||
+        !Number.isInteger(marks) ||
+        marks < 0 ||
+        marks > 100
+      ) {
+        message.textContent = "Enter whole-number marks from 0 to 100.";
+        return;
+      }
+
+      const duplicateRoll = students.some(
+        student => student.roll.toLowerCase() === roll.toLowerCase()
+      );
+
+      if (duplicateRoll) {
+        message.textContent = "This roll number already exists.";
+        return;
+      }
+
+      students.push({
+        name: name,
+        roll: roll,
+        marks: marks
+      });
+
+      message.textContent = "Student record saved successfully!";
+
+      form.reset();
+      displayStudents(students);
+    });
+
+    searchInput.addEventListener("input", function() {
+      const query = searchInput.value.trim().toLowerCase();
+
+      const filtered = students.filter(student =>
+        student.name.toLowerCase().includes(query) ||
+        student.roll.toLowerCase().includes(query)
+      );
+
+      displayStudents(filtered);
+    });
+
+    document.getElementById("showAllButton")
+      .addEventListener("click", function() {
+        searchInput.value = "";
+        displayStudents(students);
+        message.textContent = "Showing all student records.";
+      });
+
+    document.getElementById("sortButton")
+      .addEventListener("click", function() {
+        const sorted = [...students].sort(
+          (a, b) => b.marks - a.marks
+        );
+
+        displayStudents(sorted);
+        message.textContent = "Students sorted by highest percentage.";
+      });
+
+    displayStudents(students);
+  </script>
+
+</body>
+</html>
